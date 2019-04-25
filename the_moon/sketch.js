@@ -38,10 +38,10 @@ function draw() {
 
 
 
-  var watingTime = 80;
+  var watingTime = 50;
 
-  if(count2 > 80){
-    groth =  count2/2 - watingTime/2;
+  if(count2 > watingTime){
+    groth =  (count2 - watingTime)/2;
   } else {
     groth = 0;
   }
