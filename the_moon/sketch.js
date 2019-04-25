@@ -1,5 +1,7 @@
-var hi = screen.height - 20;
-var wi = screen.width;
+var viewportheight = 0;
+var viewportwidth = 0;
+var wi = window.innerWidth;
+var hi = window.innerHeight;
 var haf = hi/2;
 var hafW = wi/2;
 
@@ -23,9 +25,17 @@ function setup() {
 }
 
 function draw() {
+  //windowSize();
+  hi = window.innerHeight;
+  wi = window.innerWidth;
+  haf = hi/2;
+  hafW = wi/2;
+  //resizeCanvas(wi, hi);
   background(1,13,38);
   strokeWeight(0);
   noFill();
+
+
 
 
   var watingTime = 80;
@@ -85,8 +95,12 @@ function draw() {
   //print("Count2: " + count2);
   //*/
 
-
-
+/*/The half moon
+  if(count2 > 50){
+    fill(1,13,38);
+    rect(hafW, haf - moon/2, moon/2, moon);
+    noFill();
+  }//*/
 
   //------------------------------------------------------------------
 
@@ -144,4 +158,41 @@ function mouseReleased(){
   count2 = 0;
   b = 1;
   return false;
+}
+
+//----------------WINDOW WIGTH------------------------------
+function windowSize(){
+
+  //print("W: " + viewportwidth);
+
+  viewportwidth = window.innerWidth;
+  viewportheight = window.innerHeight;
+
+ /*/ the more standards compliant browsers (mozilla/netscape/opera/IE7) use window.innerWidth and window.innerHeight
+
+ if (typeof window.innerWidth != 'undefined')
+ {
+      viewportwidth = window.innerWidth,
+      viewportheight = window.innerHeight
+ }
+
+// IE6 in standards compliant mode (i.e. with a valid doctype as the first line in the document)
+
+ else if (typeof document.documentElement != 'undefined'
+     && typeof document.documentElement.clientWidth !=
+     'undefined' && document.documentElement.clientWidth != 0)
+ {
+       viewportwidth = document.documentElement.clientWidth,
+       viewportheight = document.documentElement.clientHeight
+ }
+
+ // older versions of IE
+
+ else
+ {
+       viewportwidth = document.getElementsByTagName('body')[0].clientWidth,
+       viewportheight = document.getElementsByTagName('body')[0].clientHeight
+ }
+//document.write('<p>Your viewport width is '+viewportwidth+'x'+viewportheight+'</p>');
+//*/
 }
